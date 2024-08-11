@@ -9,12 +9,14 @@ const getConfig = () => {
     mode: "development",
     devServer: {
       port: 3000,
+      historyApiFallback: true,
+      compress: true,
       hot: true,
       open: true,
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "bundle.js",
+      filename: "[name]-bundle.js",
     },
     module: {
       rules: [
@@ -38,9 +40,13 @@ const getConfig = () => {
       }),
       new ModuleFederationPlugin({
         name: "Host",
+        filename: "remoteEntry.js",
         remotes: {
           Remote: `Remote@http://localhost:4000/remoteEntry.js`,
         },
+        // exposes: {
+        //   "./SharedState": "./src/state/SharedState",
+        // },
         shared: {
           ...dependencies,
           react: {
@@ -50,6 +56,10 @@ const getConfig = () => {
           "react-dom": {
             singleton: true,
             requiredVersion: dependencies["react-dom"],
+          },
+          "react-router-dom": {
+            singleton: true,
+            requiredVersion: dependencies["react-router-dom"],
           },
         },
       }),
