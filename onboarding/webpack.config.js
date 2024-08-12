@@ -45,7 +45,7 @@ const getConfig = () => {
           Remote: `Remote@http://localhost:4000/remoteEntry.js`,
         },
         // exposes: {
-        //   "./SharedState": "./src/state/SharedState",
+        //   "./home": "./src/home",
         // },
         shared: {
           ...dependencies,

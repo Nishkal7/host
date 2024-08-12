@@ -1,6 +1,6 @@
 import React from "react";
 import ErrorBoundary from "./ErrorBoundary";
-const RemoteApp = React.lazy(() => import("Remote/App"));
+const RemoteApp = React.lazy(() => import("Remote/Home"));
 const RemoteButton = React.lazy(() => import("Remote/Button"));
 
 const RemoteWrapper = ({ children }) => (
@@ -16,7 +16,7 @@ const RemoteWrapper = ({ children }) => (
   </div>
 );
 
-const Login = () => {
+const SamplePoc = () => {
   return (
     <>
       <h1>Remote App : </h1>
@@ -34,4 +34,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SamplePoc;
